@@ -1,5 +1,5 @@
 import React from 'react';
-import Switch from '@material-ui/core/Switch';
+import { Switch } from '@material-ui/core';
 
 class SignUpForm extends React.Component{
 
@@ -68,7 +68,7 @@ class SignUpForm extends React.Component{
                 <div className='login-form__seperator'>
                  <label htmlFor='login-form__password' className='login-form__label'>Are you a speaker?:
                  <Switch
-                checked={this.state.isSpeaker}
+                git checked={this.state.isSpeaker}
                 onChange={this.handleChange}
                 value={this.state.isSpeaker} 
                 color="secondary"
