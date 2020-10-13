@@ -58,7 +58,6 @@ class LoginForm extends React.Component{
                     </div>
                 }
                 <div className='login-form__seperator'>
-                    <a href='google.co.in' className='login-form__forgot-password'>forgot password?</a>
                     <button onClick={() => this.props.switchForm(false)} className='login-form__forgot-password'>create new account</button>
                 </div>
             </form>
