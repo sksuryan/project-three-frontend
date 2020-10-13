@@ -36,7 +36,7 @@
 
 @media (max-width: 600px){
     .container{
-        height: 90vh;
+        height: 80vh;
     }
 
     .left-button, .right-button{

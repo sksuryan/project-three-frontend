@@ -22,8 +22,14 @@ class AuthForms extends React.Component{
             <div className='login-form__overlay' onClick={() => this.props.updateShowLogin(false)}>
                 <div className='login-form__container' onClick={(e) => e.stopPropagation()}>
                     <div className='login-form__close' onClick={() => this.props.updateShowLogin(false)}></div>
-                    {this.state.showLogIn && <LogInForm updateShowLogin={() => this.props.updateShowLogin(false)} switchForm={(v) => this.switchForm(v)}/>}
-                    {this.state.showSignUp && <SignUpForm updateShowLogin={() => this.props.updateShowLogin(false)} switchForm={(v) => this.switchForm(v)}/>}
+                    {this.state.showLogIn && <LogInForm 
+                        updateShowLogin={() => this.props.updateShowLogin(false)} 
+                        switchForm={(v) => this.switchForm(v)}
+                        updateUserState={(user) => this.props.updateUserState(user)}/>}
+                    {this.state.showSignUp && <SignUpForm 
+                        updateShowLogin={() => this.props.updateShowLogin(false)} 
+                        switchForm={(v) => this.switchForm(v)}
+                        updateUserState={(user) => this.props.updateUserState(user)}/>}
                 </div>
             </div>
         );
