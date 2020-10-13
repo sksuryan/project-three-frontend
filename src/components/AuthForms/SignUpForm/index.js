@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch } from '@material-ui/core';
 
 class SignUpForm extends React.Component{
 
@@ -9,6 +10,7 @@ class SignUpForm extends React.Component{
             name: '',
             email: '',
             password: '',
+            isSpeaker: true,
             error: null
         };
     }
@@ -21,7 +23,9 @@ class SignUpForm extends React.Component{
     updateField(e){
         this.setState({[e.target.name]: e.target.value});
     }
-
+    handleChange = (event) => {
+        this.setState({ ...this.state,[event.target.name]: event.target.checked});
+    };
     render(){
         return (
             <form className='login-form'>
@@ -62,6 +66,17 @@ class SignUpForm extends React.Component{
                     </input>
                 </div>
                 <div className='login-form__seperator'>
+                 <label htmlFor='login-form__password' className='login-form__label'>Are you a speaker?:
+                 <Switch
+                git checked={this.state.isSpeaker}
+                onChange={this.handleChange}
+                value={this.state.isSpeaker} 
+                color="secondary"
+                name="isSpeaker"
+                inputProps={{'aria-label': 'secondary checkbox' }}/>
+                </label>
+                </div>
+                <div className='login-form__seperator'>
                     <button type='submit' className='login-form__login-button' onClick={(e) => this.completeLogin(e)}>Sign Up</button>
                 </div>
                 {
@@ -70,7 +85,7 @@ class SignUpForm extends React.Component{
                     </div>
                 }
                 <div className='login-form__seperator'>
-                    <button onClick={() => this.props.switchForm(true)} className='login-form__forgot-password'>login instead</button>
+                    <button onClick={() => this.props.switchForm(true)} className='login-form__forgot-password'>Login Instead</button>
                 </div>
             </form>
         );
