@@ -1,0 +1,224 @@
+.nav{
+    display: flex;
+    width: 100%;
+    margin: 20px auto 20px auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__container {
+    display: flex;
+    width: 55%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nav__login{
+    display: none;
+    margin: 0;
+}
+
+.nav__logo {
+    font-family: 'Lilita One';
+    font-size: 28px;
+    margin: 0;
+}
+
+.nav__search-container{
+    display: flex;
+    height: 100%;
+    width: 70%;
+    align-items: center;
+    border-bottom: solid 1px black;
+}
+
+.nav__search{
+    border: none;
+    width: 100%;
+    outline: none;
+    margin: 0;
+    padding: 0 0 3px 2px;
+    font-family: 'Poppins';
+    font-size: 14px;
+}
+
+.nav__search-submit {
+    background: none;
+    margin: 0;
+    padding: 8px;
+    border: none;
+    outline: none;
+}
+
+.nav__options {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+}
+
+.nav__options li{
+    position: relative;
+    display: inline-block;
+    margin: 0 20px 0 20px;
+    font-family: Poppins;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.login-button{
+    font-family: 'Poppins';
+    font-size: 16px;
+    padding: 3px;
+    border-radius: 4px;
+    border: solid 1px black;
+}
+
+.nav__hover{
+    display: none;
+    position: absolute;
+    width: 130%;
+}
+
+.seperator{
+    width: 100%;
+    margin: 0;
+    height: 14px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.fa-caret-up{
+    margin-bottom: -10px;
+    color: #383e56;
+}
+
+.nav__profile-hover-options{
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    background: #383e56;
+    padding: 6px 10px;
+    border-radius: 12px;
+}
+
+.nav__profile-option{
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    font-family: Poppins;
+    width: 100%;
+    margin: 8px 0;
+    padding: 6px;
+    border-radius: 12px;
+    background: rgb(255, 248, 248);
+
+    transition: all ease 0.4s;
+}
+
+.nav__profile-option:hover{
+    transform: scale(1.05);
+}
+
+.nav__profile:hover .nav__hover{
+    display: block;
+}
+
+.nav__mobile-options{
+    display: none;
+}
+
+.fa-user{
+    margin-left: 0;
+    margin-right: 4px;
+}
+
+.cart-icon{
+    display: inline-block;
+    position: relative;
+}
+
+.cart-badge{
+    position: absolute;
+    top: -10px;
+    right: -6px;
+    padding: 0 6px;
+    border-radius: 12px;
+    color: white;
+
+    font-size: 12px;
+    font-family: Poppins;
+    background-color: red;
+}
+
+@media (max-width: 800px){
+
+    .nav__icon{
+        margin-left: 6px;
+        margin-right: 0px;
+    }
+
+    .nav__logo-container{
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .nav__logo{
+        font-size: 26px;
+    }
+
+    .nav__login{
+        display: block;
+    }
+
+    .nav__options{
+        display: none;
+    }
+
+    .nav__container{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav__logo{
+        align-self: flex-start;
+    }
+
+    .nav__search-container{
+        margin: 24px 0 12px 0;
+        width: 90%;
+    }
+
+    .nav__mobile-options{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav__mobile-options > .login-button{
+        font-family: 'Poppins';
+        font-size: 14px;
+        padding: 3px;
+        border-radius: 4px;
+        margin: 0;
+        border: solid 1px black;
+    }
+
+    .nav__mobile-options .nav__mobile-cart{
+        font-size: 20px;
+        margin: 0 0 0 16px;
+    }
+
+    .cart-badge{
+        top: -12px;
+        right: -14px;
+    }
+}

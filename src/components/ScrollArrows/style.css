@@ -1,0 +1,32 @@
+.rem-def-btn{
+    background: none;
+    outline: none;
+    border: none;
+
+    cursor: pointer;
+}
+
+.left-button, .right-button{
+    position: absolute;
+    top: 50%;
+
+    background-color: white;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 4px 0px rgba(51, 51, 51, 0.342);
+
+    transform: translateY(-50%);
+    transition: all ease 0.4s;
+}
+
+.left-button{
+    left: 0;
+}
+
+.right-button{
+    right: 0;
+}
+
+.left-button:hover, .right-button:hover{
+    transform: scale(1.05) translateY(-50%);
+}
