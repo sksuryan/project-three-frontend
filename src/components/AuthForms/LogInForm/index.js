@@ -2,8 +2,8 @@ import React from 'react';
 
 class LoginForm extends React.Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
             email: '',
@@ -15,6 +15,25 @@ class LoginForm extends React.Component{
     completeLogin(e){
         e.preventDefault();
         const {email,password} = this.state;
+        fetch('http://127.0.0.1:5000/auth/login/',{
+            method: 'POST',
+            mode: 'cors', 
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify(
+                {
+                    'email': email,
+                    'password': password
+                }
+            )
+        }).then(data => data.json())
+        .then(data => {
+            this.props.updateShowLogin(false)
+            this.props.updateUserState(data)
+        })
+        .catch(error => console.log(error))
         
     }
 

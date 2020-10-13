@@ -3,32 +3,21 @@ import './Nav.css';
 import AuthForms from '../AuthForms';
 
 class Nav extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             showLogin: false
         }
     }
 
-    componentDidMount(){
-        // auth.onAuthStateChanged(user => {
-        //     if(user){
-        //         this.props.login(user);
-        //         const cartRef = db.doc(`/users/${user.uid}`);
-
-        //         cartRef.onSnapshot(snapshot => {
-        //             const data = snapshot.data();
-        //             this.props.updateCart(data);
-        //         });
-        //     } else {
-        //         this.props.logout();
-        //         this.props.resetCart();
-        //     }
-        // })
-    }
-
     updateShowLogin(showLogin){
         this.setState({showLogin});
+    }
+
+    signOut(){
+        fetch('http://127.0.0.1:5000/auth/signout/')
+            .then(data => this.props.updateUserState(null))
+            .catch(error => console.log(error))
     }
 
     render(){
@@ -38,7 +27,7 @@ class Nav extends React.Component {
             <div className="nav">
                 <div className='nav__container'>
                     <div className='nav__logo-container'>
-                        <h1 className='nav__logo'>TechAboutIt</h1>
+                        <h1 className='nav__logo'>chaos</h1>
                         <div className="nav__mobile-options">
                             {
                                 !loggedIn && <h1 className='nav__login login-button' key='25515' onClick={() => this.updateShowLogin(true)}>login</h1>
@@ -66,14 +55,18 @@ class Nav extends React.Component {
                                 <div className='seperator'><span><i className="fas fa-caret-up fa-lg" aria-hidden="true"></i></span></div>
                                 <div className='nav__profile-hover-options'>
                                     <span className='nav__profile-option'>account</span>
-                                    <span className='nav__profile-option'>logout</span>
+                                    <span 
+                                        className='nav__profile-option'
+                                        onClick={() => this.signOut()}>logout</span>
                                 </div>
                             </div>
                         </li>
                     }
                 </ul>
             </div>
-            {this.state.showLogin && <AuthForms updateShowLogin={(showLogin) => this.updateShowLogin(showLogin)}/>}
+            {this.state.showLogin && <AuthForms 
+                updateShowLogin={(showLogin) => this.updateShowLogin(showLogin)}
+                updateUserState={(user) => this.props.updateUserState(user)}/>}
             </>
         );
     }
