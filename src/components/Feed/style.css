@@ -1,0 +1,44 @@
+.feed__container{
+    width: 50%;
+
+    margin: 32px auto;
+}
+
+.feed__event{
+    border-radius: 8px;
+
+    box-shadow:
+        0px 12.5px 10px rgba(0, 0, 0, 0.034),
+        0 6.7px 10px rgba(0, 0, 0, 0.048),
+        0 12.5px 10px rgba(0, 0, 0, 0.06);
+
+    margin: 12px;
+    padding: 4px 16px;
+
+    font-size: 16px;
+}
+
+.feed__topic{
+    border-radius: 8px;
+
+    border: 1px solid black;
+
+    padding: 4px;
+    margin: 0 4px;
+}
+
+@media (max-width: 1024px){
+    .feed__container{
+        width: 70%;
+    }
+    .feed__event{
+        font-size: 14px;
+    }    
+}
+
+@media (max-width: 600px){
+    .feed__container{
+        width: 100%;
+    }
+}
+

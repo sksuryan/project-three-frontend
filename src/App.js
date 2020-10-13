@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Nav from './components/Nav';
 import Carousel from './components/Carousel';
+import Feed from './components/Feed'
 
 class App extends React.Component{
   constructor(props){
@@ -31,6 +32,7 @@ class App extends React.Component{
       <div className="App">
         <Nav loggedIn={this.state.loggedIn} updateUserState={(user) => this.updateUserState(user)}/>
         {/* <Carousel /> */}
+        <Feed user={this.state.user}/>
       </div>
     );
   } 

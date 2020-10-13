@@ -15,7 +15,10 @@ class Nav extends React.Component {
     }
 
     signOut(){
-        fetch('http://127.0.0.1:5000/auth/signout/')
+        fetch('http://127.0.0.1:5000/auth/signout/',
+            {
+                method: "POST"
+            })
             .then(data => this.props.updateUserState(null))
             .catch(error => console.log(error))
     }

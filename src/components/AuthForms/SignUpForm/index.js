@@ -17,7 +17,28 @@ class SignUpForm extends React.Component{
 
     completeLogin(e){
         e.preventDefault();
-        // const {name,email,password} = this.state;
+        const {name,email,password,isSpeaker} = this.state;
+        fetch('http://127.0.0.1:5000/auth/signup/',{
+            method: 'POST',
+            mode: 'cors', 
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify(
+                {
+                    'email': email,
+                    'password': password,
+                    'name': name,
+                    'isSpeaker': isSpeaker
+                }
+            )
+        }).then(data => data.json())
+        .then(data => {
+            this.props.updateShowLogin(false)
+            this.props.updateUserState(data)
+        })
+        .catch(error => console.log(error))
     }
 
     updateField(e){
@@ -26,6 +47,7 @@ class SignUpForm extends React.Component{
     handleChange = (event) => {
         this.setState({ ...this.state,[event.target.name]: event.target.checked});
     };
+
     render(){
         return (
             <form className='login-form'>
