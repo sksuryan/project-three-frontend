@@ -1,6 +1,13 @@
 import React from 'react'
 
 class EventCard extends React.Component{
+    constructor(props){
+        super(props)
+
+        this.state = {
+            applied: false
+        }
+    }
     addForUser(id){
         const token = this.props.token
         fetch('http://127.0.0.1:5000/applications',{
@@ -15,7 +22,7 @@ class EventCard extends React.Component{
                   'event_id': id
               })       
             }).then(data => data.json())
-            .then(data => console.log(data))
+            .then(data => this.setState({applied: true}))
             .catch(error => console.log(error))
     }
     render(){
@@ -27,7 +34,11 @@ class EventCard extends React.Component{
                 <p>
                     {topics.map((i,k) => <span key={k} className='feed__topic'>{i['name']}</span>)}
                 </p>
-                <button onClick={() => this.addForUser(_id)}>Apply</button>
+                {
+                    this.state.applied?
+                        <button onClick={() => this.addForUser(_id)} disabled>Applied!</button>:
+                        <button onClick={() => this.addForUser(_id)}>Apply</button>
+                }
             </div>
         )
     }
