@@ -38,7 +38,7 @@ class Feed extends React.Component{
         let eventCard = []
         if(this.state.events)
             eventCard = this.state.events.map(i => {
-                return <EventCard key={i['_id']} event={i}></EventCard>
+                return <EventCard key={i['_id']} event={i} token={this.props.user['token']}></EventCard>
             })
         return (
             <div className='feed__container'>
