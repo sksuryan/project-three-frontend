@@ -1,5 +1,8 @@
 import React from 'react';
 import ScrollArrows from '../ScrollArrows';
+import banner1 from './banner1.png'
+import banner2 from './banner2.png'
+
 
 import './style.css'
 
@@ -41,11 +44,8 @@ class Carousel extends React.Component {
                 onMouseEnter={() => clearInterval(this.timerID)} 
                 onMouseLeave={() => this.timerID = setInterval(() => this.onHit(0),6000)}>
                 <div ref={this.div} className='carousel remove-scrollbar'>
-                    <img className='carousel__product' src='https://source.unsplash.com/1600x400/?products' alt='Resource not available'></img>
-                    <img className='carousel__product' src='https://source.unsplash.com/1600x400/?products' alt='Resource not available'></img>
-                    <img className='carousel__product' src='https://source.unsplash.com/1600x400/?products' alt='Resource not available'></img>
-                    <img className='carousel__product' src='https://source.unsplash.com/1600x400/?products' alt='Resource not available'></img>
-                    <img className='carousel__product' src='https://source.unsplash.com/1600x400/?products' alt='Resource not available'></img>
+                    <img className='carousel__product' src={banner1} alt='Resource not available'></img>
+                    <img className='carousel__product' src={banner2} alt='Resource not available'></img>
                 </div>
                 <ScrollArrows onHit={(i) => this.onHit(i)} />
             </div>

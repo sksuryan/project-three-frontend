@@ -31,7 +31,7 @@ class App extends React.Component{
     return (
       <div className="App">
         <Nav loggedIn={this.state.loggedIn} updateUserState={(user) => this.updateUserState(user)}/>
-        {/* <Carousel /> */}
+        {!this.state.loggedIn?<Carousel />:<></>}
         <Feed user={this.state.user}/>
       </div>
     );
