@@ -1,4 +1,5 @@
 .feed__container{
+    position: relative;
     width: 50%;
 
     margin: 32px auto;

@@ -2,6 +2,8 @@ import React from 'react';
 import './Nav.css';
 import AuthForms from '../AuthForms';
 
+import {Link} from 'react-router-dom'
+
 class Nav extends React.Component {
     constructor(props){
         super(props);
@@ -12,15 +14,6 @@ class Nav extends React.Component {
 
     updateShowLogin(showLogin){
         this.setState({showLogin});
-    }
-
-    signOut(){
-        fetch('http://127.0.0.1:5000/auth/signout/',
-            {
-                method: "POST"
-            })
-            .then(data => this.props.updateUserState(null))
-            .catch(error => console.log(error))
     }
 
     render(){
@@ -36,7 +29,7 @@ class Nav extends React.Component {
                                 !loggedIn && <h1 className='nav__login login-button' key='25515' onClick={() => this.updateShowLogin(true)}>login</h1>
                             }
                             {
-                                loggedIn && <span className='nav__icon'><i className="fas fa-user fa-lg nav__mobile-cart"></i></span>
+                                loggedIn && <Link to='/profile'><span className='nav__icon'><i className="fas fa-user fa-lg nav__mobile-cart"></i></span></Link>
                             }
                         </div>
                     </div>
@@ -57,10 +50,10 @@ class Nav extends React.Component {
                             <div className='nav__hover'>
                                 <div className='seperator'><span><i className="fas fa-caret-up fa-lg" aria-hidden="true"></i></span></div>
                                 <div className='nav__profile-hover-options'>
-                                    <span className='nav__profile-option'>account</span>
+                                    <Link to='/profile'><span className='nav__profile-option'>account</span></Link>
                                     <span 
                                         className='nav__profile-option'
-                                        onClick={() => this.signOut()}>logout</span>
+                                        onClick={() => this.props.signOut()}>logout</span>
                                 </div>
                             </div>
                         </li>

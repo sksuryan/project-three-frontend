@@ -1,5 +1,6 @@
 import React from 'react'
 import EventCard from './EventCard';
+import LoadingAnimation from '../LoadingAnimation'
 import './style.css'
 
 class Feed extends React.Component{
@@ -7,6 +8,27 @@ class Feed extends React.Component{
         super(props);
         this.state = {
             events: null
+        }
+    }
+
+    componentDidMount(){
+        this.mounted = true;
+        if(this.props.user){
+            const token = this.props.user['token']
+            fetch('http://127.0.0.1:5000/feed',{
+            method: 'GET',
+            mode: 'cors', 
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'token': token
+              }         
+            }).then(data => data.json())
+            .then(data => {
+                if(this.mounted)
+                this.setState({events: data})
+            })
+            .catch(error => console.log(error))
         }
     }
 
@@ -22,9 +44,16 @@ class Feed extends React.Component{
                 'token': token
               }         
             }).then(data => data.json())
-            .then(data => this.setState({events: data}))
+            .then(data => {
+                if(this.mounted)
+                this.setState({events: data})
+            })
             .catch(error => console.log(error))
         }
+    }
+
+    componentWillUnmount(){
+        this.mounted = false;
     }
 
     shouldComponentUpdate(nextProps, nextState){
@@ -42,7 +71,7 @@ class Feed extends React.Component{
             })
         return (
             <div className='feed__container'>
-                {eventCard}
+                {this.state.events?eventCard:<LoadingAnimation />}
             </div>
         )
     }
